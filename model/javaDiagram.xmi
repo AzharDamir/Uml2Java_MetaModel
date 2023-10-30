@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:JAVA="platform:/resource/tp3Atl/model/JAVA.ecore">
+  <JAVA:JavaClasse Nom="Article" fields="/1 /5"/>
+  <JAVA:Field Nom="designation" Type="String" visibilite="private"/>
+  <JAVA:Methode Nom="setDesignation" retour="void" parametres="/4"/>
+  <JAVA:Methode Nom="getDesignation" retour="String"/>
+  <JAVA:Parametre Nom="designation" Type="String"/>
+  <JAVA:Field Nom="prix" Type="float" visibilite="private"/>
+  <JAVA:Methode Nom="setPrix" retour="void" parametres="/8"/>
+  <JAVA:Methode Nom="getPrix" retour="float"/>
+  <JAVA:Parametre Nom="prix" Type="float"/>
+</xmi:XMI>

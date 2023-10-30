@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="JAVA"
+    nsURI="platform:/resource/tp3Atl/model/JAVA.ecore" nsPrefix="JAVA">
+  <eClassifiers xsi:type="ecore:EClass" name="JavaElement" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaDiagram">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//JavaElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaClasse" eSuperTypes="#//JavaElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Nom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fields" upperBound="-1"
+        eType="#//Field"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="methodes" upperBound="-1"
+        eType="#//Methode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Field" eSuperTypes="#//JavaElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Nom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibilite" eType="#//Listevisibilite"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Listevisibilite">
+    <eLiterals name="public"/>
+    <eLiterals name="protected" value="1"/>
+    <eLiterals name="package_friendly" value="2"/>
+    <eLiterals name="private" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Methode" eSuperTypes="#//JavaElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Nom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="retour" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibilite" eType="#//Listevisibilite"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parametres" upperBound="-1"
+        eType="#//Parametre"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Parametre">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Nom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

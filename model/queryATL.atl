@@ -1,0 +1,31 @@
+query querycode = MMJava!JavaClasse.allInstances()->
+collect(c | c.generateCodeClasse().writeTo('tp3Atl/src/' + c.Nom + '.java'))
+;
+helper context MMJava!JavaClasse def:generateCodeClasse():String=
+'public class '+self.Nom+'{\n'
++self.fields->iterate(att; var: String = '' |
+if (att.visibilite=#package_friendly) then	
+	var +' '+att.Type+' '+att.Nom+';\n'
+else
+	var+att.visibilite+' '+att.Type+' '+att.Nom+';\n'
+endif
+)
++self.fields->iterate(at; var: String = '' |
+	
+	var+
+if (at.visibilite=#private) then	
+	'public '+at.Type+' get'+at.Nom.toCapitalize()+'(){\n'
+	+'return '+at.Nom+';\n'
+	+'}\n'
+	
+	+'public void set'+at.Nom.toCapitalize()+'('+at.Type+' '+at.Nom+'){\n'		
+	+'this.'+at.Nom+'='+at.Nom+';\n'
+	+'}\n'
+	
+	else ''
+	endif
+)
++'\n}' 
+;	
+helper context String def: toCapitalize():String=
+self.substring(1, 1).toUpper()+self.substring(2, self.size());

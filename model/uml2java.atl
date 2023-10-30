@@ -1,0 +1,50 @@
+
+module uml2java;
+-- @path MMJava=/tp3UmlToJava/JAVA.ecore
+-- @path MMUml=/tp3UmlToJava/UML.ecore
+
+create OUT : MMJava from IN : MMUml;
+
+helper context MMUml!Attribute def: isPrivate() : Boolean = self.Visibilite = #private;
+helper context String def: toCapitalize(Nom: String) : String = Nom.substring(1, 1).toUpperCase() + Nom.substring(2, Nom.size()).toLower();
+
+rule Cuml2Cjava {
+    from s: MMUml!Classe(s.oclIsTypeOf(MMUml!Classe))
+    to t: MMJava!JavaClasse(
+        Nom <- s.Nom,
+        fields <- s.attributes
+    )
+}
+
+
+
+rule A2A {
+    from
+        uattr: MMUml!Attribute (uattr.isPrivate())
+    to
+        jfield: MMJava!Field (
+            Nom <- uattr.Nom,
+            Type <- uattr.Type,
+            visibilite <- 'private'
+        ),
+        setter: MMJava!Methode (
+            Nom <- 'set' + uattr.Nom->toCapitalize(uattr.Nom),
+            retour <- 'void',
+            visibilite <- #public,
+			parametres <- parameter
+            
+        ),
+        getter: MMJava!Methode (
+            Nom <- 'get' + uattr.Nom->toCapitalize(uattr.Nom),
+            retour <- uattr.Type,
+            visibilite <- #public
+          
+        ),
+		parameter: MMJava!Parametre (
+			Nom <- uattr.Nom,
+			Type <- uattr.Type
+		)
+}
+
+
+

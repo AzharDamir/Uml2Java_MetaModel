@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UML:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:UML="platform:/resource/tp3Atl/model/UML.ecore">
+  <elements xsi:type="UML:Classe" Nom="Article">
+    <attributes Nom="code" Type="int"/>
+    <attributes Nom="designation" Type="String" Visibilite="private"/>
+    <attributes Nom="prix" Type="float" Visibilite="private"/>
+  </elements>
+</UML:Diagram>
